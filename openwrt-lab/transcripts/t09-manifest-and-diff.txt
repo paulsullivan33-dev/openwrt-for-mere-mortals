@@ -1,0 +1,60 @@
+$ wc -l the build manifest, and grep for the two added packages
+148 openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/bin/targets/x86/64/openwrt-25.12.6-x86-64-generic.manifest
+14:htop - 3.5.3-r1
+103:libncurses6 - 6.4-r3
+121:nano - 9.3-r1
+134:terminfo - 6.4-r3
+
+$ diff the manifest against the stock image package list (t04)
+  stock /lib/apk/db/installed names: 182; build manifest names: 148
+
+  --- only in the CUSTOM build:
+htop
+libncurses6
+nano
+terminfo
+
+  --- only in the STOCK image (38 packages):
+attendedsysupgrade-common
+cgi-io
+grub2
+grub2-efi
+libiwinfo-data
+libiwinfo20230701
+liblucihttp-ucode
+liblucihttp0
+luci
+luci-app-attendedsysupgrade
+luci-app-firewall
+luci-app-package-manager
+luci-base
+luci-lib-uqr
+luci-light
+luci-mod-admin-full
+luci-mod-network
+luci-mod-status
+luci-mod-system
+luci-proto-ipv6
+luci-proto-ppp
+luci-ssl
+luci-theme-bootstrap
+owut
+px5g-mbedtls
+rpcd
+rpcd-mod-file
+rpcd-mod-iwinfo
+rpcd-mod-luci
+rpcd-mod-rpcsys
+rpcd-mod-rrdns
+rpcd-mod-ucode
+ucode-mod-html
+ucode-mod-log
+ucode-mod-math
+ucode-mod-uclient
+uhttpd
+uhttpd-mod-ubus
+
+(So a plain "make image" does NOT reproduce the official image:
+ the release build adds the whole LuCI web stack, rpcd, uhttpd,
+ owut and friends on top of the ImageBuilder default set. The
+ next build closes that gap deliberately.)

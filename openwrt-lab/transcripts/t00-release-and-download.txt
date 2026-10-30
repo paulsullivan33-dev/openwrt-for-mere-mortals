@@ -1,0 +1,19 @@
+$ curl -s https://downloads.openwrt.org/releases/ | (list of release directories, newest last)
+href="25.12.3/"
+href="25.12.4/"
+href="25.12.5/"
+href="25.12.6/"
+
+(25.12.6 is the newest stable point release; the lab uses it throughout.)
+
+$ curl -sO https://downloads.openwrt.org/releases/25.12.6/targets/x86/64/sha256sums
+-rw-rw---- 1 root root 190950 Oct 30 13:17 sha256sums
+
+$ grep squashfs-combined sha256sums
+56cf27d6f76aa582eea4c5ea18bc5f76065df48e87bf3d84e1dec82ab7f7ead4 *openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz
+
+$ curl -sO https://downloads.openwrt.org/releases/25.12.6/targets/x86/64/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz
+-rw-rw---- 1 root root 12303031 Oct 30 13:17 openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz
+
+$ sha256sum -c (for the combined image, against the published sums)
+openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz: OK

@@ -1,0 +1,70 @@
+$ cd rootfs-stock
+
+$ cat etc/inittab   (what procd, as PID 1, is told to run)
+::sysinit:/etc/init.d/rcS S boot
+::shutdown:/etc/init.d/rcS K shutdown
+ttyS0::askfirst:/usr/libexec/login.sh
+hvc0::askfirst:/usr/libexec/login.sh
+tty1::askfirst:/usr/libexec/login.sh
+
+$ ls etc/init.d/   (every service script the image ships)
+boot
+cron
+dnsmasq
+done
+dropbear
+firewall
+gpio_switch
+led
+log
+network
+odhcpd
+packet_steering
+rpcd
+sysctl
+sysfixtime
+sysntpd
+system
+ucitrack
+uhttpd
+umount
+urandom_seed
+urngd
+
+$ ls etc/rc.d/ | wc -l, and the S/K links for three services
+29
+K90network
+S19dnsmasq
+S19firewall
+S20network
+
+$ head -25 etc/init.d/dnsmasq   (the shape of an init script)
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2007-2012 OpenWrt.org
+
+START=19
+
+USE_PROCD=1
+PROG=/usr/sbin/dnsmasq
+
+ADD_LOCAL_DOMAIN=1
+ADD_LOCAL_HOSTNAME=1
+ADD_WAN_FQDN=0
+ADD_LOCAL_FQDN=""
+
+BASECONFIGFILE="/var/etc/dnsmasq.conf"
+EXTRACONFFILE="extraconfig.conf"
+BASEHOSTFILE="/tmp/hosts/dhcp"
+TRUSTANCHORSFILE="/usr/share/dnsmasq/trust-anchors.conf"
+TIMEVALIDFILE="/var/state/dnsmasqsec"
+BASEDHCPSTAMPFILE="/var/run/dnsmasq"
+DHCPBOGUSHOSTNAMEFILE="/usr/share/dnsmasq/dhcpbogushostname.conf"
+RFC6761FILE="/usr/share/dnsmasq/rfc6761.conf"
+DHCPSCRIPT="/usr/lib/dnsmasq/dhcp-script.sh"
+DHCPSCRIPT_DEPENDS="/usr/share/libubox/jshn.sh /usr/bin/jshn /bin/ubus /usr/bin/env"
+
+DNSMASQ_DHCP_VER=4
+
+$ ls -la sbin/procd sbin/init
+-rwxr-xr-x 1 root root 20649 Oct 17 21:45 rootfs-stock/sbin/init
+-rwxr-xr-x 1 root root 97835 Oct 17 21:45 rootfs-stock/sbin/procd

@@ -1,0 +1,12 @@
+$ grep imagebuilder dl/sha256sums
+a792e29bd2233cda67a0823030bfb53c0b61fbb3836b2063e88adf89730d563b *openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64.tar.zst
+
+$ curl -sO https://downloads.openwrt.org/releases/25.12.6/targets/x86/64/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64.tar.zst
+-rw-rw---- 1 root root 42523683 Oct 30 13:19 openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64.tar.zst
+
+$ sha256sum -c (imagebuilder, against the same published sums)
+openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64.tar.zst: OK
+
+$ tar -xf dl/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64.tar.zst   (tar knows zstd here; extraction takes a moment)
+openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64
+201M	openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64

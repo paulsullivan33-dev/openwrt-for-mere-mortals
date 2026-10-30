@@ -1,0 +1,27 @@
+$ gunzip -k the downloaded image (the .gz stays as downloaded)
+-rw-rw---- 1 root root 126353408 Oct 30 13:17 dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img
+
+$ file dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img
+dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img: DOS/MBR boot sector
+
+$ fdisk -l dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img
+Disk dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img: 120.5 MiB, 126353408 bytes, 246784 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x011cbbbd
+
+Device                                                   Boot Start    End Sectors  Size Id Type
+dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img1 *      512  33279   32768   16M 83 Linux
+dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img2      33792 246783  212992  104M 83 Linux
+
+$ sfdisk -d (machine-readable partition table)
+label: dos
+label-id: 0x011cbbbd
+device: dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img
+unit: sectors
+sector-size: 512
+
+dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img1 : start=         512, size=       32768, type=83, bootable
+dl/openwrt-25.12.6-x86-64-generic-squashfs-combined.img2 : start=       33792, size=      212992, type=83

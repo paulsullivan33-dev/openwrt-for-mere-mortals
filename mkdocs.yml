@@ -1,0 +1,29 @@
+site_name: OpenWrt for Mere Mortals
+site_description: A Linux distribution that turns a router into a machine you can read. Firmware images taken apart file by file, the UCI configuration system read in the original, packages and firewall defaults from a real download, and an image built to order in the lab, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/openwrt-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text CC BY 4.0, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What OpenWrt Is: what-openwrt-is.md
+  - Choosing Hardware Honestly: choosing-hardware.md
+  - The Moving Parts: the-moving-parts.md
+  - Getting the Firmware: getting-the-firmware.md
+  - Anatomy of a Real Image: anatomy-of-an-image.md
+  - UCI — the Configuration System: uci-the-configuration-system.md
+  - Packages with apk: packages-with-apk.md
+  - Network and Firewall Shape: network-and-firewall-shape.md
+  - The Wireless Shape: the-wireless-shape.md
+  - Building Your Own Image: building-your-own-image.md
+  - Upgrading and Recovery: upgrading-and-recovery.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

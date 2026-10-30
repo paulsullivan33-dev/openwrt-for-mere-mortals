@@ -1,0 +1,633 @@
+$ make image PROFILE="generic" PACKAGES="nano htop"
+  (a stock x86/64 image, plus two packages the stock image does not have)
+Generate local signing keys...
+WARNING: can't open config file: /builder/shared-workdir/build/staging_dir/host/etc/ssl/openssl.cnf
+WARNING: can't open config file: /builder/shared-workdir/build/staging_dir/host/etc/ssl/openssl.cnf
+read EC key
+writing EC key
+Checking 'true'... ok.
+Checking 'false'... ok.
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'proper-umask'... failed.
+Checking 'perl-data-dumper'... ok.
+Checking 'perl-findbin'... ok.
+Checking 'perl-file-copy'... ok.
+Checking 'perl-file-compare'... ok.
+Checking 'perl-thread-queue'... ok.
+Checking 'perl-ipc-cmd'... ok.
+Checking 'tar'... ok.
+Checking 'find'... ok.
+Checking 'bash'... updated.
+Checking 'xargs'... ok.
+Checking 'patch'... ok.
+Checking 'diff'... ok.
+Checking 'cp'... ok.
+Checking 'seq'... ok.
+Checking 'awk'... ok.
+Checking 'grep'... updated.
+Checking 'egrep'... updated.
+Checking 'getopt'... ok.
+Checking 'realpath'... ok.
+Checking 'stat'... ok.
+Checking 'gzip'... updated.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'wget'... ok.
+Checking 'install'... ok.
+Checking 'perl'... ok.
+Checking 'python'... updated.
+Checking 'python3'... updated.
+Checking 'python3-distutils'... ok.
+Checking 'python3-stdlib'... ok.
+Checking 'file'... ok.
+Checking 'which'... ok.
+Checking 'ldconfig-stub'... ok.
+
+Build dependency: Please build with umask 022 - other values produce broken packages
+
+Prerequisite check failed. Use FORCE=1 to override.
+make[1]: *** [Makefile:123: staging_dir/host/.prereq-build] Error 1
+make: *** [Makefile:357: image] Error 2
+make exit code: 2
+
+$ umask   (and then set it to what the check demands)
+0007
+
+$ umask 022; make image PROFILE="generic" PACKAGES="nano htop"
+Checking 'true'... ok.
+Checking 'false'... ok.
+Checking 'working-make'... ok.
+Checking 'case-sensitive-fs'... ok.
+Checking 'proper-umask'... ok.
+Checking 'perl-data-dumper'... ok.
+Checking 'perl-findbin'... ok.
+Checking 'perl-file-copy'... ok.
+Checking 'perl-file-compare'... ok.
+Checking 'perl-thread-queue'... ok.
+Checking 'perl-ipc-cmd'... ok.
+Checking 'tar'... ok.
+Checking 'find'... ok.
+Checking 'bash'... ok.
+Checking 'xargs'... ok.
+Checking 'patch'... ok.
+Checking 'diff'... ok.
+Checking 'cp'... ok.
+Checking 'seq'... ok.
+Checking 'awk'... ok.
+Checking 'grep'... ok.
+Checking 'egrep'... ok.
+Checking 'getopt'... ok.
+Checking 'realpath'... ok.
+Checking 'stat'... ok.
+Checking 'gzip'... ok.
+Checking 'unzip'... ok.
+Checking 'bzip2'... ok.
+Checking 'wget'... ok.
+Checking 'install'... ok.
+Checking 'perl'... ok.
+Checking 'python'... ok.
+Checking 'python3'... ok.
+Checking 'python3-distutils'... ok.
+Checking 'python3-stdlib'... ok.
+Checking 'file'... ok.
+Checking 'which'... ok.
+Checking 'ldconfig-stub'... ok.
+Building images for x86 - Generic x86/64
+Packages: nano htop apk-mbedtls base-files ca-bundle dnsmasq dropbear e2fsprogs firewall4 fstools grub2-bios-setup kernel kmod-amazon-ena kmod-amd-xgbe kmod-bnx2 kmod-button-hotplug kmod-drm-i915 kmod-dwmac-intel kmod-e1000 kmod-e1000e kmod-forcedeth kmod-fs-vfat kmod-igb kmod-igc kmod-ixgbe kmod-nft-offload kmod-r8169 kmod-tg3 libc libgcc libustream-mbedtls logd mkf2fs mtd netifd nftables odhcp6c odhcpd-ipv6only partx-utils ppp ppp-mod-pppoe procd-ujail uci uclient-fetch urandom-seed urngd "base-files=1718~981c978eff" "libc=1.2.5-r5" "kernel=6.12.112~b4125196ecec75391093e1e2edeba490-r1"
+
+WARNING: opening /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/packages/packages.adb: No such file or directory
+OK: 0 B in 0 packages
+Package list missing or not up-to-date, generating it.
+
+Building package index...
+
+Installing packages...
+(  1/148) Installing libgcc1 (14.3.0-r5)
+(  2/148) Installing libc (1.2.5-r5)
+(  3/148) Installing libmbedtls21 (3.6.7-r1)
+(  4/148) Installing libubox20260213 (2026.06.19~7dd12784-r1)
+(  5/148) Installing libuclient20201210 (2026.06.07~daad21fa-r1)
+(  6/148) Installing uclient-fetch (2026.06.07~daad21fa-r1)
+(  7/148) Installing zlib (1.3.1-r1)
+(  8/148) Installing apk-mbedtls (3.0.5-r3)
+(  9/148) Installing busybox (1.37.0-r6)
+( 10/148) Installing libubus20251202 (2026.06.28~24864e78-r2)
+( 11/148) Installing libuci20250120 (2025.12.02~66127cd7-r1)
+( 12/148) Installing libjson-c5 (0.18-r1)
+( 13/148) Installing libblobmsg-json20260213 (2026.06.19~7dd12784-r1)
+( 14/148) Installing ubusd (2026.06.28~24864e78-r2)
+( 15/148) Installing ubus (2026.06.28~24864e78-r2)
+( 16/148) Installing ubox (2025.10.30~6f78fa49-r1)
+( 17/148) Installing fstools (2026.05.23~16718b6e-r1)
+( 18/148) Installing fwtool (2025.10.03~04cd252e-r1)
+( 19/148) Installing jsonfilter (2026.03.16~b9034210-r1)
+( 20/148) Installing jshn (2026.06.19~7dd12784-r1)
+( 21/148) Installing libnl-tiny1 (2025.12.02~40493a65-r1)
+( 22/148) Installing libudebug (2026.01.16~875e1a7a)
+( 23/148) Installing libucode20230711 (2026.01.16~85922056-r2)
+( 24/148) Installing ucode (2026.01.16~85922056-r2)
+( 25/148) Installing ucode-mod-fs (2026.01.16~85922056-r2)
+( 26/148) Installing ucode-mod-ubus (2026.01.16~85922056-r2)
+( 27/148) Installing ucode-mod-uci (2026.01.16~85922056-r2)
+( 28/148) Installing ucode-mod-uloop (2026.01.16~85922056-r2)
+( 29/148) Installing netifd (2026.02.26~cbb83a18-r2)
+( 30/148) Installing openwrt-keyring (2025.12.10~f0670054-r1)
+( 31/148) Installing libjson-script20260213 (2026.06.19~7dd12784-r1)
+( 32/148) Installing procd (2026.03.13~58eb263d-r1)
+( 33/148) Installing procd-seccomp (2026.03.13~58eb263d-r1)
+( 34/148) Installing usign (2025.10.03~c4c72b1b-r1)
+( 35/148) Installing base-files (1718~981c978eff)
+( 36/148) Installing ca-bundle (20260816-r2)
+( 37/148) Installing dnsmasq (2.93-r1)
+( 38/148) Installing dropbear (2025.89-r3)
+( 39/148) Installing libpthread (1.2.5-r5)
+( 40/148) Installing librt (1.2.5-r5)
+( 41/148) Installing libuuid1 (2.41.5-r1)
+( 42/148) Installing libe2p2 (1.47.3-r1)
+( 43/148) Installing libblkid1 (2.41.5-r1)
+( 44/148) Installing libcomerr0 (1.47.3-r1)
+( 45/148) Installing libss2 (1.47.3-r1)
+( 46/148) Installing libext2fs2 (1.47.3-r1)
+( 47/148) Installing e2fsprogs (1.47.3-r1)
+( 48/148) Installing kernel (6.12.112~b4125196ecec75391093e1e2edeba490-r1)
+( 49/148) Installing kmod-crypto-hash (6.12.112-r1)
+( 50/148) Installing kmod-crypto-crc32c (6.12.112-r1)
+( 51/148) Installing kmod-lib-crc32c (6.12.112-r1)
+( 52/148) Installing kmod-nf-conntrack (6.12.112-r1)
+( 53/148) Installing kmod-nf-conntrack6 (6.12.112-r1)
+( 54/148) Installing kmod-nf-log (6.12.112-r1)
+( 55/148) Installing kmod-nf-log6 (6.12.112-r1)
+( 56/148) Installing kmod-nf-nat (6.12.112-r1)
+( 57/148) Installing kmod-nf-reject (6.12.112-r1)
+( 58/148) Installing kmod-nf-reject6 (6.12.112-r1)
+( 59/148) Installing kmod-nfnetlink (6.12.112-r1)
+( 60/148) Installing kmod-nft-core (6.12.112-r1)
+( 61/148) Installing kmod-nft-fib (6.12.112-r1)
+( 62/148) Installing kmod-nft-nat (6.12.112-r1)
+( 63/148) Installing kmod-nf-flow (6.12.112-r1)
+( 64/148) Installing kmod-nft-offload (6.12.112-r1)
+( 65/148) Installing jansson4 (2.14.1-r1)
+( 66/148) Installing libmnl0 (1.0.5-r1)
+( 67/148) Installing libnftnl11 (1.3.1-r1)
+( 68/148) Installing nftables-json (1.1.6-r2)
+( 69/148) Installing firewall4 (2025.03.17~b6e51575-r2)
+( 70/148) Installing grub2-bios-setup (2.12-r1)
+( 71/148) Installing terminfo (6.4-r3)
+( 72/148) Installing libncurses6 (6.4-r3)
+( 73/148) Installing htop (3.5.3-r1)
+( 74/148) Installing kmod-amazon-ena (6.12.112-r1)
+( 75/148) Installing kmod-libphy (6.12.112-r1)
+( 76/148) Installing kmod-mdio-devres (6.12.112-r1)
+( 77/148) Installing kmod-pps (6.12.112-r1)
+( 78/148) Installing kmod-ptp (6.12.112-r1)
+( 79/148) Installing kmod-amd-xgbe (6.12.112-r1)
+( 80/148) Installing bnx2-firmware (20260221-r1)
+( 81/148) Installing kmod-bnx2 (6.12.112-r1)
+( 82/148) Installing kmod-input-core (6.12.112-r1)
+( 83/148) Installing kmod-button-hotplug (6.12.112-r3)
+( 84/148) Installing i915-firmware-dmc (20260221-r1)
+( 85/148) Installing kmod-fb (6.12.112-r1)
+( 86/148) Installing kmod-backlight (6.12.112-r1)
+( 87/148) Installing kmod-acpi-video (6.12.112-r1)
+( 88/148) Installing kmod-dma-buf (6.12.112-r1)
+( 89/148) Installing kmod-i2c-core (6.12.112-r1)
+( 90/148) Installing kmod-drm (6.12.112-r1)
+( 91/148) Installing kmod-drm-buddy (6.12.112-r1)
+( 92/148) Installing kmod-fb-cfb-copyarea (6.12.112-r1)
+( 93/148) Installing kmod-fb-cfb-fillrect (6.12.112-r1)
+( 94/148) Installing kmod-fb-cfb-imgblt (6.12.112-r1)
+( 95/148) Installing kmod-fb-sys-fops (6.12.112-r1)
+( 96/148) Installing kmod-fb-sys-ram (6.12.112-r1)
+( 97/148) Installing kmod-drm-kms-helper (6.12.112-r1)
+( 98/148) Installing kmod-drm-display-helper (6.12.112-r1)
+( 99/148) Installing kmod-drm-exec (6.12.112-r1)
+(100/148) Installing kmod-drm-suballoc-helper (6.12.112-r1)
+(101/148) Installing kmod-drm-ttm (6.12.112-r1)
+(102/148) Installing kmod-drm-ttm-helper (6.12.112-r1)
+(103/148) Installing kmod-i2c-algo-bit (6.12.112-r1)
+(104/148) Installing kmod-drm-i915 (6.12.112-r1)
+(105/148) Installing kmod-phylink (6.12.112-r1)
+(106/148) Installing kmod-pcs-xpcs (6.12.112-r1)
+(107/148) Installing kmod-stmmac-core (6.12.112-r1)
+(108/148) Installing kmod-dwmac-intel (6.12.112-r1)
+(109/148) Installing kmod-e1000 (6.12.112-r1)
+(110/148) Installing kmod-e1000e (6.12.112-r1)
+(111/148) Installing kmod-forcedeth (6.12.112-r1)
+(112/148) Installing kmod-nls-base (6.12.112-r1)
+(113/148) Installing kmod-nls-cp437 (6.12.112-r1)
+(114/148) Installing kmod-nls-iso8859-1 (6.12.112-r1)
+(115/148) Installing kmod-nls-utf8 (6.12.112-r1)
+(116/148) Installing kmod-fs-vfat (6.12.112-r1)
+(117/148) Installing kmod-hwmon-core (6.12.112-r1)
+(118/148) Installing kmod-igb (6.12.112-r1)
+(119/148) Installing kmod-igc (6.12.112-r1)
+(120/148) Installing kmod-mdio (6.12.112-r1)
+(121/148) Installing kmod-ixgbe (6.12.112-r1)
+(122/148) Installing kmod-mii (6.12.112-r1)
+(123/148) Installing kmod-phy-realtek (6.12.112-r1)
+(124/148) Installing r8169-firmware (20260221-r1)
+(125/148) Installing kmod-r8169 (6.12.112-r1)
+(126/148) Installing kmod-tg3 (6.12.112-r1)
+(127/148) Installing libustream-mbedtls20201210 (2026.03.01~99f1c0db-r1)
+(128/148) Installing logd (2025.10.30~6f78fa49-r1)
+(129/148) Installing libf2fs6 (1.16.0-r4)
+(130/148) Installing mkf2fs (1.16.0-r4)
+(131/148) Installing mtd (27)
+(132/148) Installing nano (9.3-r1)
+(133/148) Installing odhcp6c (2026.06.27~10a52220-r3)
+(134/148) Installing odhcpd-ipv6only (2026.06.29~5d7be43f-r1)
+(135/148) Installing libsmartcols1 (2.41.5-r1)
+(136/148) Installing partx-utils (2.41.5-r1)
+(137/148) Installing kmod-lib-crc-ccitt (6.12.112-r1)
+(138/148) Installing kmod-slhc (6.12.112-r1)
+(139/148) Installing kmod-ppp (6.12.112-r1)
+(140/148) Installing ppp (2.5.2-r4)
+(141/148) Installing kmod-pppox (6.12.112-r1)
+(142/148) Installing kmod-pppoe (6.12.112-r1)
+(143/148) Installing ppp-mod-pppoe (2.5.2-r4)
+(144/148) Installing procd-ujail (2026.03.13~58eb263d-r1)
+(145/148) Installing uci (2025.12.02~66127cd7-r1)
+(146/148) Installing getrandom (2025.10.30~6f78fa49-r1)
+(147/148) Installing urandom-seed (3)
+(148/148) Installing urngd (2025.10.03~f17e33d9-r1)
+OK: 18.1 MiB in 148 packages
+
+Finalizing root filesystem...
+add alternative: /usr/bin/ssh-keygen -> /usr/sbin/dropbear
+add alternative: /usr/bin/scp -> /usr/sbin/dropbear
+add alternative: /usr/bin/ssh -> /usr/sbin/dropbear
+add alternative: /sbin/logread -> /usr/libexec/logread-ubox
+add alternative: /sbin/rmmod -> /sbin/kmodloader
+add alternative: /sbin/insmod -> /sbin/kmodloader
+add alternative: /sbin/lsmod -> /sbin/kmodloader
+add alternative: /sbin/modinfo -> /sbin/kmodloader
+add alternative: /sbin/modprobe -> /sbin/kmodloader
+add alternative: /usr/bin/wget -> /bin/uclient-fetch
+Enabling boot
+Enabling cron
+Enabling dnsmasq
+Enabling done
+Enabling dropbear
+Enabling firewall
+Enabling gpio_switch
+Enabling led
+Enabling log
+Enabling network
+Enabling odhcpd
+Enabling packet_steering
+Enabling sysctl
+Enabling sysfixtime
+Enabling sysntpd
+Enabling system
+Enabling umount
+Enabling urandom_seed
+Enabling urngd
+
+Building images...
+Pseudo file "dev" exists in source filesystem "/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/root-x86/dev".
+Ignoring, exclude it (-e/-ef) to override.
+Parallel mksquashfs: Using 2 processors
+Creating 4.0 filesystem on /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.squashfs, block size 262144.
+[|                                                               ]   0/718   0%[===============================================================\] 755/755 100%
+
+Exportable Squashfs 4.0 filesystem, xz compressed, data block size 262144
+	compressed data, compressed metadata, compressed fragments,
+	no xattrs, compressed ids
+	duplicates are removed
+Filesystem size 5806.12 Kbytes (5.67 Mbytes)
+	31.07% of uncompressed filesystem size (18687.74 Kbytes)
+Inode table size 7342 bytes (7.17 Kbytes)
+	21.53% of uncompressed inode table size (34102 bytes)
+Directory table size 10206 bytes (9.97 Kbytes)
+	49.68% of uncompressed directory table size (20544 bytes)
+Number of duplicate files found 10
+Number of inodes 1017
+Number of files 695
+Number of fragments 44
+Number of symbolic links 229
+Number of device nodes 1
+Number of fifo nodes 0
+Number of socket nodes 0
+Number of directories 92
+Number of hard-links 0
+Number of ids (unique uids + gids) 1
+Number of uids 1
+	unknown (0)
+Number of gids 1
+	unknown (0)
+Creating filesystem with parameters:
+    Size: 109051904
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 6656
+    Inode size: 256
+    Journal blocks: 1024
+    Label: rootfs
+    Blocks: 26624
+    Block groups: 1
+    Reserved blocks: 0
+    Reserved block group size: 7
+Created filesystem with 1026/6656 inodes and 6747/26624 blocks
+11612+1 records in
+11612+1 records out
+5945472 bytes (5.9 MB, 5.7 MiB) copied, 0.375323 s, 15.8 MB/s
+0+1 records in
+1+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 0.678346 s, 161 MB/s
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 6.94872 s, 15.7 MB/s
+1+0 records in
+1+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 1.2196 s, 89.4 MB/s
+cp: cannot stat '/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/target-x86_64_musl/root-x86/boot/.': No such file or directory
++ [ 6 -ne 5 ]
++ [ 6 -ne 6 ]
++ OUTPUT=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz
++ KERNELSIZE=16
++ KERNELDIR=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz.boot
++ KERNELPARTTYPE=83
++ ROOTFSSIZE=104
++ ROOTFSIMAGE=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.squashfs
++ ROOTFSPARTTYPE=83
++ ALIGN=256
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz
++ head=16
++ sect=63
++ ptgen -o /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz -h 16 -s 63 -t 83 -p 16m -t 83 -p 104m -l 256 -S 0x011cbbbd
+part 0 16384
+part 0 106496
++ set 262144 16777216 17301504 109051904
++ KERNELOFFSET=512
++ KERNELSIZE=16777216
++ ROOTFSOFFSET=33792
++ ROOTFSSIZE=212992
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz bs=512 seek=33792 conv=notrunc count=212992
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 1.89381 s, 57.6 MB/s
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.squashfs of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz bs=512 seek=33792 conv=notrunc
+11612+1 records in
+11612+1 records out
+5945472 bytes (5.9 MB, 5.7 MiB) copied, 0.217217 s, 27.4 MB/s
++ [ -n  ]
++ make_ext4fs -J -L kernel -l 16777216 -T 1792273538 /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz.boot
+Creating filesystem with parameters:
+    Size: 16777216
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 1024
+    Inode size: 256
+    Journal blocks: 0
+    Label: kernel
+    Blocks: 4096
+    Block groups: 1
+    Reserved blocks: 0
+    Reserved block group size: 7
+Created filesystem with 17/1024 inodes and 1514/4096 blocks
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz.kernel of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz bs=512 seek=512 conv=notrunc
+32768+0 records in
+32768+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.317741 s, 52.8 MB/s
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined.img.gz.kernel
+cp: cannot stat '/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/target-x86_64_musl/root-x86/boot/.': No such file or directory
++ [ 6 -ne 5 ]
++ [ 6 -ne 6 ]
++ OUTPUT=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz
++ KERNELSIZE=16
++ KERNELDIR=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz.boot
++ KERNELPARTTYPE=83
++ ROOTFSSIZE=104
++ ROOTFSIMAGE=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.ext4
++ ROOTFSPARTTYPE=83
++ ALIGN=256
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz
++ head=16
++ sect=63
++ ptgen -o /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz -h 16 -s 63 -t 83 -p 16m -t 83 -p 104m -l 256 -S 0x011cbbbd
+part 0 16384
+part 0 106496
++ set 262144 16777216 17301504 109051904
++ KERNELOFFSET=512
++ KERNELSIZE=16777216
++ ROOTFSOFFSET=33792
++ ROOTFSSIZE=212992
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz bs=512 seek=33792 conv=notrunc count=212992
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 9.17761 s, 11.9 MB/s
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.ext4 of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz bs=512 seek=33792 conv=notrunc
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 7.20818 s, 15.1 MB/s
++ [ -n  ]
++ make_ext4fs -J -L kernel -l 16777216 -T 1792273538 /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz.boot
+Creating filesystem with parameters:
+    Size: 16777216
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 1024
+    Inode size: 256
+    Journal blocks: 0
+    Label: kernel
+    Blocks: 4096
+    Block groups: 1
+    Reserved blocks: 0
+    Reserved block group size: 7
+Created filesystem with 17/1024 inodes and 1514/4096 blocks
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz.kernel of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz bs=512 seek=512 conv=notrunc
+32768+0 records in
+32768+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.528859 s, 31.7 MB/s
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined.img.gz.kernel
+cp: cannot stat '/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/target-x86_64_musl/root-x86/boot/.': No such file or directory
++ [ 6 -ne 5 ]
++ [ 6 -ne 6 ]
++ OUTPUT=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz
++ KERNELSIZE=16
++ KERNELDIR=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot
++ KERNELPARTTYPE=83
++ ROOTFSSIZE=104
++ ROOTFSIMAGE=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.squashfs
++ ROOTFSPARTTYPE=83
++ ALIGN=256
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz
++ head=16
++ sect=63
++ ptgen -o /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz -h 16 -s 63 -g -t 83 -p 16m -t 83 -p 104m -l 256 -S 0x011cbbbd -G 011cbbbd-1913-b25c-1f6f-606edfea6a00
+part 0 16384
+part 0 106496
++ set 262144 16777216 17039360 109051904
++ KERNELOFFSET=512
++ KERNELSIZE=16777216
++ ROOTFSOFFSET=33280
++ ROOTFSSIZE=212992
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz bs=512 seek=33280 conv=notrunc count=212992
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 2.50474 s, 43.5 MB/s
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.squashfs of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz bs=512 seek=33280 conv=notrunc
+11612+1 records in
+11612+1 records out
+5945472 bytes (5.9 MB, 5.7 MiB) copied, 0.0968295 s, 61.4 MB/s
++ [ -n 011cbbbd-1913-b25c-1f6f-606edfea6a00 ]
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz bs=512 seek=246272 conv=notrunc count=63
+63+0 records in
+63+0 records out
+32256 bytes (32 kB, 32 KiB) copied, 0.000809465 s, 39.8 MB/s
++ mkfs.fat --invariant -n kernel -C /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel -S 512 16384
+mkfs.fat: Warning: lowercase labels might not work properly on some systems
+mkfs.fat 4.2 (2021-01-31)
++ LC_ALL=C dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot /
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot
++ baseentry=boot
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel ::/boot
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot /boot/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub
++ baseentry=grub
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel ::/boot/grub
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub /boot/grub/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/boot.img ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/boot.img ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/core.img ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/core.img ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/grub.cfg ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/grub/grub.cfg ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/vmlinuz ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/boot/vmlinuz ::/boot/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi
++ baseentry=efi
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel ::/efi
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi /efi/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot
++ baseentry=boot
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel ::/efi/boot
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot /efi/boot/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot/bootx64.efi ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.boot/efi/boot/bootx64.efi ::/efi/boot/
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz bs=512 seek=512 conv=notrunc
+32768+0 records in
+32768+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.583212 s, 28.8 MB/s
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-squashfs-combined-efi.img.gz.kernel
+/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/host/bin/grub-bios-setup: warning: Your BIOS Boot Partition is under 1 MiB, please increase its size..
+cp: cannot stat '/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/target-x86_64_musl/root-x86/boot/.': No such file or directory
++ [ 6 -ne 5 ]
++ [ 6 -ne 6 ]
++ OUTPUT=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz
++ KERNELSIZE=16
++ KERNELDIR=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot
++ KERNELPARTTYPE=83
++ ROOTFSSIZE=104
++ ROOTFSIMAGE=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.ext4
++ ROOTFSPARTTYPE=83
++ ALIGN=256
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz
++ head=16
++ sect=63
++ ptgen -o /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz -h 16 -s 63 -g -t 83 -p 16m -t 83 -p 104m -l 256 -S 0x011cbbbd -G 011cbbbd-1913-b25c-1f6f-606edfea6a00
+part 0 16384
+part 0 106496
++ set 262144 16777216 17039360 109051904
++ KERNELOFFSET=512
++ KERNELSIZE=16777216
++ ROOTFSOFFSET=33280
++ ROOTFSSIZE=212992
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz bs=512 seek=33280 conv=notrunc count=212992
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 4.87559 s, 22.4 MB/s
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/root.ext4 of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz bs=512 seek=33280 conv=notrunc
+212992+0 records in
+212992+0 records out
+109051904 bytes (109 MB, 104 MiB) copied, 4.02772 s, 27.1 MB/s
++ [ -n 011cbbbd-1913-b25c-1f6f-606edfea6a00 ]
++ [ -n 1 ]
++ dd if=/dev/zero of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz bs=512 seek=246272 conv=notrunc count=63
+63+0 records in
+63+0 records out
+32256 bytes (32 kB, 32 KiB) copied, 0.000457076 s, 70.6 MB/s
++ mkfs.fat --invariant -n kernel -C /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel -S 512 16384
+mkfs.fat: Warning: lowercase labels might not work properly on some systems
+mkfs.fat 4.2 (2021-01-31)
++ LC_ALL=C dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot /
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot
++ baseentry=boot
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/boot
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot /boot/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub
++ baseentry=grub
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/boot/grub
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub /boot/grub/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/boot.img ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/boot.img ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/core.img ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/core.img ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/grub.cfg ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/grub/grub.cfg ::/boot/grub/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/vmlinuz ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/vmlinuz ::/boot/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi
++ baseentry=efi
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/efi
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi /efi/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot
++ baseentry=boot
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/efi/boot
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot /efi/boot/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot/bootx64.efi ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot/bootx64.efi ::/efi/boot/
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz bs=512 seek=512 conv=notrunc
+32768+0 records in
+32768+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.61157 s, 27.4 MB/s
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel
+/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/host/bin/grub-bios-setup: warning: Your BIOS Boot Partition is under 1 MiB, please increase its size..
+14114+1 records in
+14114+1 records out
+7226470 bytes (7.2 MB, 6.9 MiB) copied, 0.110422 s, 65.4 MB/s
+
+Calculating checksums...
+make exit code: 0

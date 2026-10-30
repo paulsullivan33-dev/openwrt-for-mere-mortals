@@ -1,0 +1,35 @@
+$ gunzip -k the custom combined image built in t10
+-rw-r----- 1 root root 126353408 Oct 30 13:32 custom-combined.img
+
+$ fdisk -l (same partition layout as the stock image, t01)
+Disk custom-combined.img: 120.5 MiB, 126353408 bytes, 246784 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x011cbbbd
+
+Device               Boot Start    End Sectors  Size Id Type
+custom-combined.img1 *      512  33279   32768   16M 83 Linux
+custom-combined.img2      33792 246783  212992  104M 83 Linux
+
+$ cut out partition 2 and unsquashfs it
+created 0 fifos
+created 0 sockets
+created 0 hardlinks
+
+$ the files that exist only because of the customisation:
+-rwxr-xr-x 1 root root 295377 Oct 17 21:45 rootfs-custom/usr/bin/htop
+-rwxr-xr-x 1 root root 151657 Oct 17 21:45 rootfs-custom/usr/bin/nano
+
+$ the same paths in the STOCK rootfs (t02):
+ls: cannot access 'rootfs-stock/usr/bin/nano': No such file or directory
+ls: cannot access 'rootfs-stock/usr/bin/htop': No such file or directory
+
+$ and LuCI, present in the custom build rootfs too:
+cgi-backup
+cgi-download
+cgi-exec
+cgi-upload
+luci
+-rwxr-xr-x 1 root root 62442 Oct 17 21:45 rootfs-custom/usr/sbin/uhttpd

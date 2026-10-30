@@ -1,0 +1,314 @@
+$ cd rootfs-stock   (the unpacked stock root filesystem from t02; every path below is inside it)
+
+$ ls -la etc/config/
+total 28
+drwxr-xr-x 1 root root   68 Oct 17 21:45 .
+drwxr-xr-x 1 root root 1058 Oct 17 21:45 ..
+-rw------- 1 root root 1183 Oct 17 21:45 dhcp
+-rw------- 1 root root  286 Oct 17 21:45 dropbear
+-rw-r--r-- 1 root root 4064 Oct 17 21:45 firewall
+-rw-r--r-- 1 root root  687 Oct 17 21:45 luci
+-rw------- 1 root root  167 Oct 17 21:45 rpcd
+-rw------- 1 root root 4546 Oct 17 21:45 uhttpd
+
+$ cat etc/config/dhcp   (the shipped DHCP and DNS defaults, complete)
+config dnsmasq
+	option domainneeded	1
+	option boguspriv	1
+	option filterwin2k	0  # enable for dial on demand
+	option localise_queries	1
+	option rebind_protection 1  # disable if upstream must serve RFC1918 addresses
+	option rebind_localhost 1  # enable for RBL checking and similar services
+	#list rebind_domain example.lan  # whitelist RFC1918 responses for domains
+	option local	'/lan/'
+	option domain	'lan'
+	option expandhosts	1
+	option nonegcache	0
+	option cachesize	1000
+	option authoritative	1
+	option readethers	1
+	option leasefile	'/tmp/dhcp.leases'
+	option resolvfile	'/tmp/resolv.conf.d/resolv.conf.auto'
+	#list server		'/mycompany.local/1.2.3.4'
+	option nonwildcard	1 # bind to & keep track of interfaces
+	#list interface		br-lan
+	#list notinterface	lo
+	#list bogusnxdomain     '64.94.110.11'
+	option localservice	1  # disable to allow DNS requests from non-local subnets
+	option ednspacket_max	1232
+	option filter_aaaa	0
+	option filter_a		0
+	#list addnmount		/some/path # read-only mount path to expose it to dnsmasq
+
+config dhcp lan
+	option interface	lan
+	option start 	100
+	option limit	150
+	option leasetime	12h
+
+config dhcp wan
+	option interface	wan
+	option ignore	1
+
+$ cat etc/config/firewall   (the shipped firewall defaults, complete, 189 lines)
+config defaults
+	option syn_flood	1
+	option input		REJECT
+	option output		ACCEPT
+	option forward		REJECT
+# Uncomment this line to disable ipv6 rules
+#	option disable_ipv6	1
+
+config zone
+	option name		lan
+	list   network		'lan'
+	option input		ACCEPT
+	option output		ACCEPT
+	option forward		ACCEPT
+
+config zone
+	option name		wan
+	list   network		'wan'
+	list   network		'wan6'
+	option input		REJECT
+	option output		ACCEPT
+	option forward		DROP
+	option masq		1
+	option mtu_fix		1
+
+config forwarding
+	option src		lan
+	option dest		wan
+
+# We need to accept udp packets on port 68,
+# see https://dev.openwrt.org/ticket/4108
+config rule
+	option name		Allow-DHCP-Renew
+	option src		wan
+	option proto		udp
+	option dest_port	68
+	option target		ACCEPT
+	option family		ipv4
+
+# Allow IPv4 ping
+config rule
+	option name		Allow-Ping
+	option src		wan
+	option proto		icmp
+	option icmp_type	echo-request
+	option family		ipv4
+	option target		ACCEPT
+
+config rule
+	option name		Allow-IGMP
+	option src		wan
+	option proto		igmp
+	option family		ipv4
+	option target		ACCEPT
+
+# Allow DHCPv6 replies
+# see https://github.com/openwrt/openwrt/issues/5066
+config rule
+	option name		Allow-DHCPv6
+	option src		wan
+	option proto		udp
+	option dest_port	546
+	option family		ipv6
+	option target		ACCEPT
+
+config rule
+	option name		Allow-MLD
+	option src		wan
+	option proto		icmp
+	option src_ip		fe80::/10
+	list icmp_type		'130/0'
+	list icmp_type		'131/0'
+	list icmp_type		'132/0'
+	list icmp_type		'143/0'
+	option family		ipv6
+	option target		ACCEPT
+
+# Allow essential incoming IPv6 ICMP traffic
+config rule
+	option name		Allow-ICMPv6-Input
+	option src		wan
+	option proto	icmp
+	list icmp_type		echo-request
+	list icmp_type		echo-reply
+	list icmp_type		destination-unreachable
+	list icmp_type		packet-too-big
+	list icmp_type		time-exceeded
+	list icmp_type		bad-header
+	list icmp_type		unknown-header-type
+	list icmp_type		router-solicitation
+	list icmp_type		neighbour-solicitation
+	list icmp_type		router-advertisement
+	list icmp_type		neighbour-advertisement
+	option limit		1000/sec
+	option family		ipv6
+	option target		ACCEPT
+
+# Allow essential forwarded IPv6 ICMP traffic
+config rule
+	option name		Allow-ICMPv6-Forward
+	option src		wan
+	option dest		*
+	option proto		icmp
+	list icmp_type		echo-request
+	list icmp_type		echo-reply
+	list icmp_type		destination-unreachable
+	list icmp_type		packet-too-big
+	list icmp_type		time-exceeded
+	list icmp_type		bad-header
+	list icmp_type		unknown-header-type
+	option limit		1000/sec
+	option family		ipv6
+	option target		ACCEPT
+
+config rule
+	option name		Allow-IPSec-ESP
+	option src		wan
+	option dest		lan
+	option proto		esp
+	option target		ACCEPT
+
+config rule
+	option name		Allow-ISAKMP
+	option src		wan
+	option dest		lan
+	option dest_port	500
+	option proto		udp
+	option target		ACCEPT
+
+
+### EXAMPLE CONFIG SECTIONS
+# do not allow a specific ip to access wan
+#config rule
+#	option src		lan
+#	option src_ip	192.168.45.2
+#	option dest		wan
+#	option proto	tcp
+#	option target	REJECT
+
+# block a specific mac on wan
+#config rule
+#	option dest		wan
+#	option src_mac	00:11:22:33:44:66
+#	option target	REJECT
+
+# block incoming ICMP traffic on a zone
+#config rule
+#	option src		lan
+#	option proto	ICMP
+#	option target	DROP
+
+# port redirect port coming in on wan to lan
+#config redirect
+#	option src			wan
+#	option src_dport	80
+#	option dest			lan
+#	option dest_ip		192.168.16.235
+#	option dest_port	80
+#	option proto		tcp
+
+# port redirect of remapped ssh port (22001) on wan
+#config redirect
+#	option src		wan
+#	option src_dport	22001
+#	option dest		lan
+#	option dest_port	22
+#	option proto		tcp
+
+### FULL CONFIG SECTIONS
+#config rule
+#	option src		lan
+#	option src_ip	192.168.45.2
+#	option src_mac	00:11:22:33:44:55
+#	option src_port	80
+#	option dest		wan
+#	option dest_ip	194.25.2.129
+#	option dest_port	120
+#	option proto	tcp
+#	option target	REJECT
+
+#config redirect
+#	option src		lan
+#	option src_ip	192.168.45.2
+#	option src_mac	00:11:22:33:44:55
+#	option src_port		1024
+#	option src_dport	80
+#	option dest_ip	194.25.2.129
+#	option dest_port	120
+#	option proto	tcp
+
+$ cat etc/config/dropbear   (the shipped SSH server defaults, complete)
+# See https://openwrt.org/docs/guide-user/base-system/dropbear
+config dropbear main
+	option enable '1'
+	option PasswordAuth 'on'
+	option RootPasswordAuth 'on'
+	option Port         '22'
+#	option BannerFile   '/etc/banner'
+#	option LocalPortForward 'off'
+#	option RemotePortForward 'off'
+
+$ cat etc/config/network
+cat: etc/config/network: No such file or directory
+exit code: 1
+
+$ cat etc/config/system
+cat: etc/config/system: No such file or directory
+exit code: 1
+
+$ cat etc/config/wireless
+cat: etc/config/wireless: No such file or directory
+exit code: 1
+
+(Those three files are NOT in the image. /etc/config/network and
+ /etc/config/system are written on first boot by /bin/config_generate,
+ driven by the board scripts in /etc/board.d/. The generic x86 one is:)
+
+$ ls etc/board.d/
+01_leds
+02_network
+99-default_network
+
+$ cat etc/board.d/99-default_network
+#
+# Copyright (C) 2013-2015 OpenWrt.org
+#
+
+. /lib/functions/uci-defaults.sh
+
+board_config_update
+
+json_is_a network object && exit 0
+
+ucidef_set_interface_lan 'eth0'
+[ -d /sys/class/net/eth1 ] && ucidef_set_interface_wan 'eth1'
+
+board_config_flush
+
+exit 0
+
+$ grep -n "192.168" bin/config_generate   (the generated LAN default address)
+166:				lan) ipad=${ipaddr:-"192.168.1.1"} ;;
+167:				*) ipad=${ipaddr:-"192.168.$((addr_offset++)).1"} ;;
+
+$ sed -n "314,318p" bin/config_generate   (the generated system defaults)
+		delete system.@system[0]
+		add system system
+		set system.@system[-1].hostname='OpenWrt'
+		set system.@system[-1].timezone='GMT0'
+		set system.@system[-1].zonename='UTC'
+
+$ grep -A2 "ucidef_set_interface_lan()" lib/functions/uci-defaults.sh   (protocol defaults)
+ucidef_set_interface_lan() {
+	ucidef_set_interface "lan" device "$1" protocol "${2:-static}"
+}
+ucidef_set_interface_wan() {
+	ucidef_set_interface "wan" device "$1" protocol "${2:-dhcp}"
+}
+
+(So on first boot a generic x86 machine gets: lan = eth0, static,
+ 192.168.1.1; wan = eth1 if present, dhcp; hostname OpenWrt.)

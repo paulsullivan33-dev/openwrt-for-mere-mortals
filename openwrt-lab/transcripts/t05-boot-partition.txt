@@ -1,0 +1,42 @@
+$ file bootpart.bin   (partition 1, cut out in t02)
+bootpart.bin: Linux rev 1.0 ext2 filesystem data, UUID=84173db5-fa99-e35a-95c6-28613cc79ea9, volume name "kernel" (extents) (large files)
+
+$ debugfs -R "ls -l /" bootpart.bin   (read the ext2 without mounting it)
+      2   40755 (2)      0      0    4096 17-Oct-2026 21:45 .
+      2   40755 (2)      0      0    4096 17-Oct-2026 21:45 ..
+     11   40700 (2)      0      0    4096  1-Jan-1970 00:00 lost+found
+     12   40755 (2)      0      0    4096 17-Oct-2026 21:45 boot
+
+
+$ debugfs -R "ls -l /boot" bootpart.bin
+     12   40755 (2)      0      0    4096 17-Oct-2026 21:45 .
+      2   40755 (2)      0      0    4096 17-Oct-2026 21:45 ..
+     13   40755 (2)      0      0    4096 17-Oct-2026 21:45 grub
+     17  100644 (1)      0      0   5706752 17-Oct-2026 21:45 vmlinuz
+
+
+$ debugfs -R "ls -l /boot/grub" bootpart.bin
+     13   40755 (2)      0      0    4096 17-Oct-2026 21:45 .
+     12   40755 (2)      0      0    4096 17-Oct-2026 21:45 ..
+     14  100755 (1)      0      0     512 17-Oct-2026 21:45 boot.img
+     15  100644 (1)      0      0   153833 17-Oct-2026 21:45 core.img
+     16  100644 (1)      0      0     471 17-Oct-2026 21:45 grub.cfg
+
+
+$ debugfs -R "dump /boot/grub/grub.cfg grub.cfg" bootpart.bin, then cat grub.cfg
+serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1 --rtscts=off
+terminal_input console serial; terminal_output console serial
+
+set default="0"
+set timeout="5"
+set root='(hd0,msdos1)'
+
+menuentry "OpenWrt" {
+	linux /boot/vmlinuz root=PARTUUID=011cbbbd-02 rootwait  console=tty1 console=ttyS0,115200n8 noinitrd
+}
+menuentry "OpenWrt (failsafe)" {
+	linux /boot/vmlinuz failsafe=true root=PARTUUID=011cbbbd-02 rootwait  console=tty1 console=ttyS0,115200n8 noinitrd
+}
+
+(The disk label-id from sfdisk in t01 was 0x011cbbbd, so PARTUUID
+ 011cbbbd-02 names partition 2 of this very image - the squashfs.)

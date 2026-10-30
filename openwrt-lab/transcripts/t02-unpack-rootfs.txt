@@ -1,0 +1,74 @@
+$ dd out partition 2 (start 33792 sectors x 512 = offset 17301504) = the root filesystem
+-rw-rw---- 1 root root 109051904 Oct 30 13:17 rootfs.squashfs
+
+$ file rootfs.squashfs
+rootfs.squashfs: Squashfs filesystem, little endian, version 4.0, xz compressed, 6096242 bytes, 1291 inodes, blocksize: 262144 bytes, created: Sat Oct 17 21:45:38 2026
+
+$ dd out partition 1 (start 512, 16 MiB) = the boot partition, and file it
+bootpart.bin: Linux rev 1.0 ext2 filesystem data, UUID=84173db5-fa99-e35a-95c6-28613cc79ea9, volume name "kernel" (extents) (large files)
+
+$ unsquashfs -stat rootfs.squashfs (the squashfs header, before unpacking)
+Found a valid SQUASHFS 4:0 superblock on rootfs.squashfs.
+Creation or last append time Sat Oct 17 21:45:38 2026
+Filesystem size 6096242 bytes (5953.36 Kbytes / 5.81 Mbytes)
+Compression xz
+	Dictionary size 262144
+	Filters selected: x86
+Block size 262144
+Filesystem is exportable via NFS
+Inodes are compressed
+Data is compressed
+Uids/Gids (Id table) are compressed
+Fragments are compressed
+Always-use-fragments option is not specified
+Xattrs are not stored
+Duplicates are removed
+Number of fragments 52
+Number of inodes 1291
+Number of ids 1
+
+$ unsquashfs -d rootfs-stock rootfs.squashfs
+created 0 devices
+created 0 fifos
+created 0 sockets
+created 0 hardlinks
+
+$ ls rootfs-stock
+bin
+dev
+etc
+lib
+lib64
+mnt
+overlay
+proc
+rom
+root
+sbin
+sys
+tmp
+usr
+var
+www
+
+$ cat rootfs-stock/etc/os-release
+NAME="OpenWrt"
+VERSION="25.12.6"
+ID="openwrt"
+ID_LIKE="lede openwrt"
+PRETTY_NAME="OpenWrt 25.12.6"
+VERSION_ID="25.12.6"
+HOME_URL="https://openwrt.org/"
+BUG_URL="https://bugs.openwrt.org/"
+SUPPORT_URL="https://forum.openwrt.org/"
+FIRMWARE_URL="https://downloads.openwrt.org/"
+BUILD_ID="r33311-981c978eff"
+OPENWRT_BOARD="x86/64"
+OPENWRT_ARCH="x86_64"
+OPENWRT_TAINTS=""
+OPENWRT_DEVICE_MANUFACTURER="OpenWrt"
+OPENWRT_DEVICE_MANUFACTURER_URL="https://openwrt.org/"
+OPENWRT_DEVICE_PRODUCT="Generic"
+OPENWRT_DEVICE_REVISION="v0"
+OPENWRT_RELEASE="OpenWrt 25.12.6 r33311-981c978eff"
+OPENWRT_BUILD_DATE="1792273538"

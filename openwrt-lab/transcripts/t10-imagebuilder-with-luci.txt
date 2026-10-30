@@ -1,0 +1,66 @@
+$ umask 022; make image PROFILE="generic" PACKAGES="luci nano htop"
+  (same build, with the luci collection added to close the gap t09 found)
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/boot/vmlinuz ::/boot/
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi
++ baseentry=efi
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/efi
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi /efi/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot ]
++ [ -d /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot ]
++ basename /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot
++ baseentry=boot
++ mmd -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel ::/efi/boot
++ dos_dircopy /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot /efi/boot/
++ local entry
++ local baseentry
++ [ -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot/bootx64.efi ]
++ mcopy -i /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.boot/efi/boot/bootx64.efi ::/efi/boot/
++ dd if=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel of=/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz bs=512 seek=512 conv=notrunc
+32768+0 records in
+32768+0 records out
+16777216 bytes (17 MB, 16 MiB) copied, 0.26863 s, 62.5 MB/s
++ rm -f /home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/build_dir/target-x86_64_musl/linux-x86_64/tmp/openwrt-25.12.6-x86-64-generic-ext4-combined-efi.img.gz.kernel
+/home/hatch/workspace/openwrt-labwork/openwrt-imagebuilder-25.12.6-x86-64.Linux-x86_64/staging_dir/host/bin/grub-bios-setup: warning: Your BIOS Boot Partition is under 1 MiB, please increase its size..
+15149+1 records in
+15149+1 records out
+7756706 bytes (7.8 MB, 7.4 MiB) copied, 0.150012 s, 51.7 MB/s
+
+Calculating checksums...
+make exit code: 0
+
+$ grep the new manifest for the proof lines
+177 bin/targets/x86/64/openwrt-25.12.6-x86-64-generic.manifest
+htop - 3.5.3-r1
+luci - 26.288.56989~75a306d
+luci-base - 26.288.56989~75a306d
+nano - 9.3-r1
+rpcd - 2026.10.04~d99f703e-r1
+uhttpd - 2026.08.24~373145f7-r1
+
+$ diff the new manifest against the stock list once more
+  only in the custom build:
+htop
+libncurses6
+nano
+terminfo
+  only in the stock image:
+attendedsysupgrade-common
+grub2
+grub2-efi
+luci-app-attendedsysupgrade
+luci-ssl
+owut
+px5g-mbedtls
+rpcd-mod-rpcsys
+ucode-mod-uclient
+
+(Adding "luci" closed the gap from 38 missing packages to 9: the
+ attended-upgrade stack (owut, attendedsysupgrade-common,
+ luci-app-attendedsysupgrade), LuCI's SSL pieces (luci-ssl,
+ px5g-mbedtls), the GRUB packages and two support modules.
+ Names reconciled exactly: 182 stock - 9 left out + 4 added
+ (nano, htop and their two dependencies) = 177 in the manifest.)
